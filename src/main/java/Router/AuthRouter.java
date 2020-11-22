@@ -1,9 +1,7 @@
 package Router;
 
 import Controller.AuthController;
-import Model.Result;
-import Model.ResultStatus;
-import Model.User;
+import Model.*;
 import com.google.gson.Gson;
 
 import javax.servlet.RequestDispatcher;
@@ -42,19 +40,32 @@ public class AuthRouter extends HttpServlet {
         resp.setContentType("application/json");
         PrintWriter writer = resp.getWriter();
         Gson gson = new Gson();
-
-        try {
-            String username = req.getParameter("username");
-            String password = req.getParameter("password");
-            User user = controller.login(username, password);
-            Result<User> result = new Result<>(ResultStatus.success, user, "Great to see you again " + user.getUsername());
-
-            writer.print(gson.toJson(result));
-            writer.flush();
-        } catch (Exception e) {
-            Result<User> result = new Result<>(ResultStatus.error, e.getMessage());
-            writer.print(gson.toJson(result));
-            writer.flush();
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
+        boolean asEmployee = Boolean.getBoolean(req.getParameter("asEmployee"));
+        if(asEmployee) {
+            try {
+                Employee employee = controller.employeeLogin(username, password);
+                Result<Employee> result = new Result<>(ResultStatus.success, employee, "Great to see you again " + employee.getEmployeeID());
+                writer.print(gson.toJson(result));
+                writer.flush();
+            } catch (Exception e) {
+                Result<User> result = new Result<>(ResultStatus.error, e.getMessage());
+                writer.print(gson.toJson(result));
+                writer.flush();
+            }
+        }
+        else{
+            try{
+                User user = controller.login(username, password);
+                Result<User> result = new Result<>(ResultStatus.success, user, "Great to see you again " + user.getUsername());
+                writer.print(gson.toJson(result));
+                writer.flush();
+            } catch (Exception e) {
+                Result<User> result = new Result<>(ResultStatus.error, e.getMessage());
+                writer.print(gson.toJson(result));
+                writer.flush();
+            }
         }
     }
 
