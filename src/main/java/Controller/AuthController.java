@@ -2,6 +2,7 @@ package Controller;
 
 import Converter.AuthConverter;
 import Model.User;
+import Model.Employee;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -47,6 +48,23 @@ public class AuthController {
         resultSet.next();
 
         return new AuthConverter(resultSet).singleUser();
+    }
+
+    public Employee employeeLogin(String username,
+                      String password) throws Exception {
+        Class.forName("com.mysql.jdbc.Driver");
+
+        Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/mydb?allowPublicKeyRetrieval=true&useSSL=false",
+                "root",
+                "password");
+        PreparedStatement preparedStatement = connection.prepareStatement("select * from mydb.Employee where EmployeeID = ? and password = ?");
+        preparedStatement.setString(1, username);
+        preparedStatement.setString(2, password);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+        resultSet.next();
+
+        return new AuthConverter(resultSet).singleEmployee();
     }
 
 
