@@ -1,0 +1,80 @@
+#headerCarousel {
+    width: 100%;
+    height: 100vh;
+}
+
+#headerCarousel img {
+    height: 100%;
+}
+
+.header {
+    position: relative;
+}
+
+.searchHotel {
+    position: absolute;
+    bottom: 96px;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 20px;
+    background-color: #fff;
+    z-index: 1;
+    width: calc(100vw - 360px);
+    margin-left: 180px;
+    margin-right: 180px;
+    padding: 28px 30px;
+    border-radius: 8px;
+}
+
+
+.modal-background {
+    background-color: rgba(10, 10, 10, .86);
+}
+
+.wrapper{
+    width:100%;
+    padding-top: 20px;
+    text-align:center;
+}
+
+.carousel{
+    width:90%;
+    margin:0px auto;
+}
+
+.cityItem {
+    position: relative;
+    border-radius: 6px;
+}
+
+.cityItem .content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 2;
+    border-radius: 6px;
+    border: none;
+}
+
+.cityItem .content h3 {
+    color: #fff;
+}
+
+.slick-slide{
+    margin:10px;
+}
+
+.slick-prev:before, .slick-next:before {
+    color: #00d1b2 !important;
+}
+.slick-slide img {
+    width:100%;
+    border-radius: 6px;
+}
