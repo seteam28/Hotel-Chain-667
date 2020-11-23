@@ -29,6 +29,8 @@ public class BookingConverter {
         booking.setNumberofChildren(resultSet.getInt("numberOfChildren"));
         booking.setPhoneNumber(resultSet.getString("mobilePhoneNumber"));
         booking.setNaming(resultSet.getString("naming"));
+        booking.setTotalPrice(controller.getPrice(resultSet.getString("guestID"), resultSet.getInt("RoomTypeID"),
+                resultSet.getInt("HotelID"), booking.getStartDate(), booking.getEndDate()));
         return booking;
     }
 
