@@ -49,7 +49,6 @@ public class BookingRouter extends HttpServlet{
         resp.setContentType("application/json");
         PrintWriter writer = resp.getWriter();
         Gson gson = new Gson();
-
         try {
             int hotelID = Integer.parseInt(req.getParameter("hotelId"));
             String checkIn = req.getParameter("checkIn");
