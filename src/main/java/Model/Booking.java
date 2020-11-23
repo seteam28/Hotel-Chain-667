@@ -13,6 +13,7 @@ public class Booking {
     private int numberofChildren;
     private int roomNumber;
     private String phoneNumber;
+    private float totalPrice;
 
 
     public Booking(){}
@@ -51,6 +52,14 @@ public class Booking {
     public void setFirstName(String firstName) { this.firstName = firstName; }
 
     public void setSecondName(String secondName) { this.secondName = secondName; }
+
+    public void setTotalPrice(float totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public float getTotalPrice() {
+        return totalPrice;
+    }
 
     public int getRoomNumber() { return roomNumber; }
 
